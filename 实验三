@@ -1,0 +1,38 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import tkinter as tk
+x=np.linspace(0,5,20)
+x1=np.linspace(0,10,10)
+X=[2,1.5,1,0.5]
+
+def zhouqi():
+  y1=[]
+  for i in range(32):
+      y1.append(X[i%4])
+  
+  plt.stem(list(y1))
+  plt.grid(True)
+  plt.title('zhouqi')
+  plt.show()
+
+def zhengxian():
+   y2=2*np.sin(0.5*np.pi*x+2)
+   plt.title('zhengxian')
+   plt.grid(True)
+   plt.stem(x,y2)
+   plt.show()
+
+
+if __name__ == "__main__":
+   window = tk.Tk()
+   window.title('周期')
+   window.geometry('500x300')
+   l = tk.Label(window, text='信号与系统', bg='green', font=('Arial', 12), width=30, height=2)
+   l.pack()
+   b1 = tk.Button(window, text='周期', font=('Arial', 12), width=10, height=1,command=zhouqi)
+   b2 = tk.Button(window, text='正弦', font=('Arial', 12), width=10, height=1,command=zhengxian)
+   num = 2
+   b1.pack(padx=0, pady=num)
+   b2.pack(padx=0, pady=num)
+
+   window.mainloop()
